@@ -1107,6 +1107,57 @@
             loadQuestion();
             loadProductGalleries();
         };
-    </script>
+    </script> 
+    (No subject)
+Janely Zermeño
+​You​
+<!-- CUESTIONARIO DE TIPO DE PIEL -->
+<section id="cuestionario" style="padding: 30px; background-color: #f7f0e8;">
+  <h2>✨ Descubre tu tipo de piel ✨</h2>
+  <p>Responde estas preguntas y te recomendaré una rutina ideal 💆‍♀️</p>
+ 
+  <form id="formPiel">
+    <label>1. ¿Cómo se siente tu piel al despertar?</label><br/>
+    <select name="preg1">
+      <option value="seca">Tirante o reseca</option>
+      <option value="normal">Suave y normal</option>
+      <option value="grasa">Grasa o con brillo</option>
+      <option value="mixta">Zonas mixtas</option>
+    </select><br/><br/>
+
+    <label>2. ¿Cómo reacciona tu piel al sol?</label><br/>
+    <select name="preg2">
+      <option value="sensible">Se enrojece fácilmente</option>
+      <option value="normal">Se broncea con facilidad</option>
+      <option value="mixta">No noto mucho cambio</option>
+      <option value="manchas">Se mancha fácilmente</option>
+    </select><br/><br/>
+
+    <label>3. ¿Qué te gustaría mejorar?</label><br/>
+    <select name="preg3">
+      <option value="hidratacion">Hidratación</option>
+      <option value="brillo">Control de brillo</option>
+      <option value="tono">Unificar tono</option>
+      <option value="granitos">Disminuir granitos o poros</option>
+    </select><br/><br/>
+
+    <button type="button" onclick="mostrarResultado()">Ver recomendación</button>
+  </form>
+
+  <div id="resultado" style="margin-top: 20px; font-weight: bold;"></div>
+</section>
+
+<script>
+  function mostrarResultado() {
+    const preg1 = document.getElementById('formPiel').preg1.value;
+    let tipo = "normal";
+
+    if (preg1 === "seca") tipo = "piel seca";
+    else if (preg1 === "grasa") tipo = "piel grasa";
+    else if (preg1 === "mixta") tipo = "piel mixta";
+
+    document.getElementById('resultado').innerHTML =
+      `✅ Según tus respuestas, podrías tener <strong>${tipo}</strong>.<br>
+      Escríbeme por Instagram <a href="https://instagram.com/Jan_zermeno
 </body>
 </html>
