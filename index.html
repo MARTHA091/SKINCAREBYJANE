@@ -1,101 +1,1139 @@
-(No subject)
-Janely Zermeño
-​You​
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Glow by Janely 🧿</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f8f1e7;
-      color: #5a4034;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    header {
-      background-color: #e3d5ca;
-      padding: 20px;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-    .intro {
-      padding: 30px 20px;
-    }
-    .productos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-    }
-    .producto {
-      background: #fff;
-      border-radius: 10px;
-      padding: 15px;
-      width: 250px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .producto img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .producto h3 {
-      margin-top: 10px;
-    }
-    footer {
-      background-color: #e3d5ca;
-      padding: 20px;
-      margin-top: 40px;
-    }
-    a {
-      color: #5a4034;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia de Piel - JaneZerm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        /* Importar fuentes de Google Fonts para un diseño atractivo */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+        /* Definición de variables CSS para los colores pastel en tonos tierra */
+        :root {
+            --color-primary: #A37B73; /* Terracota/Marrón rosado apagado - para elementos principales y botones */
+            --color-secondary: #F5EFE6; /* Beige pálido/Crema - para fondos de secciones */
+            --color-tertiary: #D6B5B0; /* Rosa empolvado/Rubor - para acentos y hover */
+            --color-background: #F8F4EF; /* Blanco roto muy claro y cálido - fondo general */
+            --color-text: #4A3F3F; /* Marrón oscuro suave/Carbón - para el texto, para contraste */
+            --color-selected: #8C5E58; /* Terracota más profundo - para la opción seleccionada */
+            --color-button-hover: #B89A94; /* Terracota apagado más claro - para hover de botones principales */
+            --color-prev-button: #7AB8B2; /* Azul/Turquesa más fuerte para el botón "Anterior" */
+            --color-border-light: #C7B9B4; /* Gris cálido y claro/Topo para bordes suaves */
+            --color-accent-blue: #A7D9D3; /* Azul/Turquesa pastel para combinar con el ojo turco */
+            --color-title-strong: #6B3F38; /* Nuevo color para el título, un terracota más oscuro y llamativo */
+        }
+
+        /* Estilos generales del cuerpo */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--color-background) 0%, #F0EDE8 100%); /* Degradado suave para el fondo, tono tierra */
+            color: var(--color-text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            position: relative; /* Necesario para posicionar las decoraciones */
+            overflow-x: hidden; /* Evitar scroll horizontal por decoraciones */
+        }
+
+        /* Contenedor principal de la aplicación */
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 20px; /* Bordes más redondeados */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada y suave */
+            width: 90%;
+            max-width: 800px;
+            margin-bottom: 30px; /* Más espacio entre secciones */
+            text-align: center;
+            /* Animación de entrada */
+            animation: fadeInDown 1s ease-out;
+            position: relative; /* Para que las decoraciones dentro de él se posicionen correctamente */
+            z-index: 1; /* Asegurar que el contenido esté por encima de las decoraciones de fondo */
+        }
+
+        /* Sección del encabezado */
+        header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Contenedor del logotipo y eslogan */
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 25px; /* Más espacio */
+        }
+
+        /* Estilo del logotipo principal (ahora el ojo turco) */
+        .logo {
+            width: 100px; /* Tamaño ajustado para el ojo turco */
+            height: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra para el logo */
+            /* Animación del logotipo */
+            animation: bounceIn 1s ease-out;
+        }
+
+        /* Estilo del eslogan */
+        .slogan-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em; /* Tamaño del eslogan más grande */
+            color: var(--color-primary);
+            margin-top: 15px; /* Más espacio */
+            font-weight: 700; /* Más énfasis */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); /* Sombra de texto sutil */
+            /* Animación del texto del eslogan */
+            animation: lightSpeedInRight 1s ease-out;
+        }
+
+        /* Título principal de la aplicación */
+        h1 {
+            color: var(--color-title-strong); /* Usando el nuevo color más llamativo para el título */
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            font-size: 2.5em; /* Título más grande */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08); /* Sombra para el título */
+        }
+
+        /* Contenedor de cada pregunta */
+        .question-container {
+            margin-bottom: 30px;
+            background-color: var(--color-secondary);
+            padding: 30px; /* Más padding */
+            border-radius: 15px; /* Más redondeado */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+            border: 1px solid var(--color-border-light); /* Borde sutil */
+        }
+
+        /* Texto de la pregunta */
+        .question-text {
+            font-size: 1.5em; /* Texto de pregunta más grande */
+            margin-bottom: 25px;
+            color: var(--color-text);
+            font-weight: 700;
+        }
+
+        /* Contenedor de las opciones de respuesta */
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px; /* Más espacio entre opciones */
+        }
+
+        /* Botones de opción de respuesta */
+        .option-button {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            border: 2px solid var(--color-primary); /* Borde más pronunciado con color primario */
+            padding: 18px 28px; /* Más padding */
+            border-radius: 10px; /* Más redondeado */
+            font-size: 1.2em; /* Texto de opción más grande */
+            cursor: pointer;
+            transition: all 0.3s ease; /* Transición más suave para todos los cambios */
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+        }
+
+        /* Efecto hover para los botones de opción */
+        .option-button:hover {
+            background-color: var(--color-tertiary);
+            color: #fff;
+            transform: translateY(-5px) scale(1.02); /* Efecto más pronunciado */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Sombra al hacer hover */
+        }
+
+        /* Estilo para la opción seleccionada */
+        .option-button.selected {
+            background-color: var(--color-selected);
+            color: #fff;
+            border-color: var(--color-selected);
+            animation: pulse 0.5s ease-out; /* Pequeña animación al seleccionar */
+            transform: scale(1.01); /* Ligeramente más grande al seleccionar */
+        }
+
+        /* Contenedor de botones de navegación */
+        .navigation-buttons {
+            margin-top: 40px; /* Más espacio */
+            display: flex;
+            justify-content: space-between;
+            gap: 25px; /* Más espacio entre botones */
+        }
+
+        /* Botones de navegación (Siguiente y Ver Resultados) */
+        .nav-button {
+            background-color: var(--color-primary); /* El botón "Siguiente" usa el color primario */
+            color: #fff;
+            border: none;
+            padding: 15px 30px; /* Más padding */
+            border-radius: 10px; /* Más redondeado */
+            font-size: 1.2em; /* Texto de botón más grande */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Sombra para botones */
+        }
+
+        /* Estilo específico para el botón "Anterior" */
+        #prev-btn {
+            background-color: var(--color-prev-button); /* Usa el nuevo color más fuerte para "Anterior" */
+            color: #fff; /* Texto blanco para mejor contraste con el nuevo color */
+            border: 2px solid var(--color-prev-button); /* Borde con el mismo color fuerte */
+        }
+
+        /* Efecto hover para los botones de navegación */
+        .nav-button:hover {
+            background-color: var(--color-button-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Sombra al hacer hover */
+        }
+        /* Efecto hover específico para el botón "Anterior" */
+        #prev-btn:hover {
+            background-color: #9AD0CB; /* Un tono más claro del azul/turquesa para hover */
+            border-color: #9AD0CB;
+        }
+
+        /* Estilo para botones deshabilitados */
+        .nav-button:disabled {
+            background-color: #E0E0E0; /* Gris claro para deshabilitado */
+            cursor: not-allowed;
+            border-color: #D0D0D0; /* Borde más claro para deshabilitado */
+            color: #A0A0A0; /* Texto más claro */
+            box-shadow: none;
+            transform: none;
+        }
+
+        /* Contenedor de resultados (inicialmente oculto) */
+        #results-container {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            border-radius: 20px;
+            background-color: var(--color-secondary);
+            /* Animación de entrada para los resultados */
+            animation: zoomIn 1s ease-out;
+            margin-top: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Título de resultados */
+        #results-container h2 {
+            color: var(--color-title-strong); /* También aplicar el color fuerte a este título */
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 25px;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Párrafos dentro del contenedor de resultados */
+        #results-container p {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        /* Subtítulo de recomendaciones de productos */
+        #results-container h3 {
+            color: var(--color-tertiary);
+            font-family: 'Playfair Display', serif;
+            margin-top: 30px;
+            font-size: 1.8em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Estilo para las secciones de recomendación de productos */
+        .product-recommendation {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            border: 1px solid var(--color-border-light);
+        }
+
+        /* Título de cada marca de producto */
+        .product-recommendation h4 {
+            color: var(--color-primary);
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        /* Listas de productos recomendados */
+        .product-recommendation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .product-recommendation ul li {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            line-height: 1.4;
+        }
+
+        /* Estilos para las galerías de productos */
+        .gallery-section {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: var(--color-secondary);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--color-border-light);
+            cursor: pointer; /* Indicar que es clickeable */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-section h3 {
+            color: var(--color-primary);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Columnas más flexibles */
+            gap: 25px; /* Más espacio */
+            justify-content: center;
+        }
+
+        /* Estilo para las tarjetas de producto individuales en la galería */
+        .product-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--color-primary); /* Borde rosa delgado */
+            cursor: pointer; /* Indicar que la tarjeta es clickeable */
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: 130px; /* Altura ligeramente mayor */
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-card p {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: var(--color-text);
+            margin: 0;
+        }
+
+        /* Estilos para la sección de unirse al negocio */
+        .join-business-section {
+            margin-top: 40px;
+            padding: 25px;
+            background-color: var(--color-background); /* Fondo más claro para esta sub-sección */
+            border-radius: 15px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--color-border-light);
+        }
+
+        .join-business-section h3 {
+            color: var(--color-primary);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .join-business-section p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        /* Asegura que el enlace de WhatsApp en esta sección también luzca como un botón */
+        .join-business-section a.nav-button {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: var(--color-primary);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            font-size: 1.1em;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .join-business-section a.nav-button:hover {
+            background-color: var(--color-button-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Estilo para la imagen de Jane en la sección "Sobre Mí" */
+        .jane-profile-img {
+            width: 150px; /* Tamaño de la imagen */
+            height: 150px;
+            border-radius: 50%; /* Para hacerla circular */
+            object-fit: cover; /* Para asegurar que la imagen cubra el área sin distorsionarse */
+            margin-bottom: 20px; /* Espacio debajo de la imagen */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            border: 4px solid var(--color-primary); /* Borde con el color primario */
+            animation: fadeIn 1s ease-out; /* Animación de entrada */
+        }
+
+        /* Estilos para los iconos de bandera */
+        .flag-icon {
+            width: 18px; /* Tamaño de la bandera */
+            height: auto;
+            vertical-align: middle; /* Alinea verticalmente con el texto */
+            margin-right: 8px; /* Espacio a la derecha de la bandera */
+            border-radius: 3px; /* Ligeramente redondeado */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Sombra sutil */
+        }
+
+        /* Pie de página */
+        footer {
+            margin-top: 50px;
+            padding: 25px;
+            text-align: center;
+            width: 100%;
+            background-color: var(--color-primary);
+            color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.15);
+            /* Animación de entrada del pie de página */
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Párrafos en el pie de página */
+        footer p {
+            margin: 8px 0;
+            font-size: 1.1em;
+        }
+
+        /* Enlaces en el pie de página */
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            display: inline-flex; /* Para alinear la bandera y el texto */
+            align-items: center; /* Centrar verticalmente */
+        }
+
+        /* Efecto hover para enlaces en el pie de página */
+        footer a:hover {
+            color: var(--color-accent-blue); /* Usar el nuevo color azul/turquesa */
+        }
+
+        /* Estilos para las decoraciones de fondo */
+        .decoration {
+            position: absolute;
+            opacity: 0.35; /* Hacerlos más visibles para un toque más alegre */
+            z-index: 0; /* Enviar al fondo, pero por encima del body si el body tiene z-index */
+            font-size: 3em; /* Para emojis */
+            pointer-events: none; /* Asegurar que no interfieran con clics */
+        }
+        .decoration.leaf-1 { top: 8%; left: 5%; transform: rotate(20deg); }
+        .decoration.leaf-2 { bottom: 12%; right: 7%; transform: rotate(-30deg); }
+        .decoration.leaf-3 { top: 30%; right: 3%; transform: rotate(45deg); }
+        .decoration.leaf-4 { top: 15%; right: 25%; transform: rotate(10deg); font-size: 2.5em; }
+        .decoration.leaf-5 { bottom: 5%; left: 20%; transform: rotate(-50deg); font-size: 3.5em; }
+        .decoration.leaf-6 { top: 60%; left: 15%; transform: rotate(70deg); font-size: 2.8em; }
+        .decoration.leaf-7 { bottom: 30%; right: 18%; transform: rotate(-80deg); font-size: 3.2em; }
+        .decoration.leaf-8 { top: 50%; left: 8%; transform: rotate(15deg); font-size: 2.2em; } /* Nueva hoja */
+        .decoration.leaf-9 { bottom: 40%; left: 25%; transform: rotate(-25deg); font-size: 2.7em; } /* Nueva hoja */
+
+        .decoration.turkish-eye-1 { top: 5%; right: 15%; width: 80px; height: auto; opacity: 0.3; } /* Opacidad aumentada */
+        .decoration.turkish-eye-2 { bottom: 20%; left: 10%; width: 60px; height: auto; opacity: 0.25; transform: rotate(10deg); } /* Opacidad aumentada */
+        .decoration.turkish-eye-3 { top: 40%; left: 5%; width: 70px; height: auto; opacity: 0.28; transform: rotate(-20deg); } /* Opacidad aumentada */
+        .decoration.turkish-eye-4 { top: 20%; left: 40%; width: 50px; height: auto; opacity: 0.2; transform: rotate(30deg); } /* Opacidad aumentada */
+        .decoration.turkish-eye-5 { bottom: 10%; right: 40%; width: 70px; height: auto; opacity: 0.22; transform: rotate(-10deg); } /* Opacidad aumentada */
+        .decoration.turkish-eye-6 { top: 75%; right: 30%; width: 65px; height: auto; opacity: 0.2; transform: rotate(50deg); } /* Nuevo ojo turco */
+
+        .decoration.lipstick-1 { top: 25%; left: 12%; transform: rotate(-15deg); opacity: 0.4; font-size: 2.5em; } /* Opacidad aumentada */
+        .decoration.lipstick-2 { bottom: 8%; right: 20%; transform: rotate(30deg); opacity: 0.35; font-size: 2.8em; } /* Opacidad aumentada */
+        .decoration.lipstick-3 { top: 55%; right: 10%; transform: rotate(10deg); opacity: 0.38; font-size: 2.2em; } /* Opacidad aumentada */
+        .decoration.lipstick-4 { bottom: 25%; left: 30%; transform: rotate(-40deg); opacity: 0.32; font-size: 3em; } /* Opacidad aumentada */
+        .decoration.lipstick-5 { top: 70%; left: 5%; transform: rotate(50deg); opacity: 0.3; font-size: 2.6em; } /* Opacidad aumentada */
+        .decoration.lipstick-6 { top: 18%; left: 65%; transform: rotate(20deg); opacity: 0.3; font-size: 2.3em; } /* Nuevo labial */
+
+        .decoration.sparkle-1 { top: 10%; left: 40%; font-size: 2.8em; opacity: 0.4; transform: rotate(5deg); } /* Opacidad aumentada */
+        .decoration.sparkle-2 { bottom: 18%; right: 40%; font-size: 3.2em; opacity: 0.45; transform: rotate(-10deg); } /* Opacidad aumentada */
+        .decoration.sparkle-3 { top: 50%; left: 45%; font-size: 2.5em; opacity: 0.38; transform: rotate(15deg); } /* Opacidad aumentada */
+        .decoration.sparkle-4 { top: 30%; left: 70%; font-size: 2.9em; opacity: 0.35; transform: rotate(-5deg); } /* Nuevo brillo */
+        .decoration.flower-1 { top: 2%; left: 60%; font-size: 3em; opacity: 0.3; transform: rotate(25deg); } /* Opacidad aumentada */
+        .decoration.flower-2 { bottom: 2%; left: 45%; font-size: 2.5em; opacity: 0.35; transform: rotate(-15deg); } /* Opacidad aumentada */
+        .decoration.flower-3 { top: 80%; right: 5%; font-size: 2.8em; opacity: 0.32; transform: rotate(40deg); } /* Opacidad aumentada */
+        .decoration.flower-4 { top: 65%; left: 30%; font-size: 3.1em; opacity: 0.28; transform: rotate(-30deg); } /* Nueva flor */
+
+        .decoration.water-drop-1 { top: 45%; left: 2%; font-size: 2.7em; opacity: 0.3; transform: rotate(0deg); } /* Opacidad aumentada */
+        .decoration.water-drop-2 { bottom: 40%; right: 2%; font-size: 3.1em; opacity: 0.35; transform: rotate(0deg); } /* Opacidad aumentada */
+        .decoration.water-drop-3 { top: 35%; right: 20%; font-size: 2.9em; opacity: 0.28; transform: rotate(0deg); } /* Opacidad aumentada */
+        .decoration.water-drop-4 { top: 10%; left: 80%; font-size: 2.5em; opacity: 0.25; transform: rotate(0deg); } /* Nueva gota */
+
+
+        .decoration img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Diseño Responsivo para diferentes tamaños de pantalla */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                width: 95%;
+            }
+
+            .slogan-text {
+                font-size: 1.4em;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .question-text {
+                font-size: 1.3em;
+            }
+
+            .option-button {
+                font-size: 1.1em;
+                padding: 15px 20px;
+            }
+
+            .navigation-buttons {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-button {
+                width: 100%;
+                font-size: 1em;
+                padding: 12px 25px;
+            }
+
+            #results-container h2 {
+                font-size: 2em;
+            }
+
+            #results-container p {
+                font-size: 1.2em;
+            }
+
+            #results-container h3 {
+                font-size: 1.6em;
+            }
+
+            .gallery-section h3 {
+                font-size: 1.8em;
+            }
+            .join-business-section h3 {
+                font-size: 1.5em;
+            }
+            .join-business-section p {
+                font-size: 1.1em;
+            }
+            .jane-profile-img {
+                width: 120px;
+                height: 120px;
+            }
+            /* Ajuste de decoraciones para móviles */
+            .decoration {
+                font-size: 2em; /* Emojis más pequeños */
+                opacity: 0.2; /* Opacidad ligeramente reducida para móviles */
+            }
+            .decoration.turkish-eye-1 { width: 60px; }
+            .decoration.turkish-eye-2 { width: 40px; }
+            .decoration.turkish-eye-3 { width: 50px; }
+            .decoration.turkish-eye-4 { width: 35px; }
+            .decoration.turkish-eye-5 { width: 55px; }
+            .decoration.turkish-eye-6 { width: 45px; } /* Nuevo ojo turco */
+
+            .decoration.leaf-1 { top: 5%; left: 2%; }
+            .decoration.leaf-2 { bottom: 10%; right: 5%; }
+            .decoration.leaf-3 { top: 25%; right: 1%; }
+            .decoration.leaf-4 { top: 10%; right: 20%; font-size: 2em; }
+            .decoration.leaf-5 { bottom: 3%; left: 15%; font-size: 2.5em; }
+            .decoration.leaf-6 { top: 55%; left: 10%; font-size: 2.2em; }
+            .decoration.leaf-7 { bottom: 25%; right: 15%; font-size: 2.5em; }
+            .decoration.leaf-8 { top: 45%; left: 5%; font-size: 1.8em; } /* Nueva hoja */
+            .decoration.leaf-9 { bottom: 35%; left: 20%; font-size: 2.2em; } /* Nueva hoja */
+
+            .decoration.lipstick-1 { top: 20%; left: 5%; }
+            .decoration.lipstick-2 { bottom: 5%; right: 10%; }
+            .decoration.lipstick-3 { top: 50%; right: 5%; font-size: 1.8em; }
+            .decoration.lipstick-4 { bottom: 20%; left: 25%; font-size: 2.2em; }
+            .decoration.lipstick-5 { top: 65%; left: 2%; font-size: 2em; }
+            .decoration.lipstick-6 { top: 15%; left: 60%; font-size: 1.8em; } /* Nuevo labial */
+
+            .decoration.sparkle-1 { top: 8%; left: 35%; font-size: 2.2em; }
+            .decoration.sparkle-2 { bottom: 15%; right: 35%; font-size: 2.5em; }
+            .decoration.sparkle-3 { top: 45%; left: 40%; font-size: 2em; }
+            .decoration.sparkle-4 { top: 25%; left: 65%; font-size: 2.2em; } /* Nuevo brillo */
+            .decoration.flower-1 { top: 1%; left: 55%; font-size: 2.5em; }
+            .decoration.flower-2 { bottom: 1%; left: 40%; font-size: 2em; }
+            .decoration.flower-3 { top: 75%; right: 2%; font-size: 2.2em; }
+            .decoration.flower-4 { top: 60%; left: 25%; font-size: 2.5em; } /* Nueva flor */
+
+            .decoration.water-drop-1 { top: 40%; left: 1%; font-size: 2.2em; }
+            .decoration.water-drop-2 { bottom: 35%; right: 1%; font-size: 2.5em; }
+            .decoration.water-drop-3 { top: 30%; right: 15%; font-size: 2.2em; }
+            .decoration.water-drop-4 { top: 8%; left: 75%; font-size: 2em; } /* Nueva gota */
+        }
+
+        @media (max-width: 600px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: 15px;
+            }
+            .product-card img {
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            .slogan-text {
+                font-size: 1.1em;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .question-text {
+                font-size: 1.1em;
+            }
+
+            .option-button {
+                font-size: 1em;
+                padding: 12px 15px;
+            }
+
+            footer {
+                padding: 15px;
+            }
+
+            footer p {
+                font-size: 0.95em;
+            }
+            .logo {
+                width: 90px; /* Ajuste para pantallas pequeñas */
+            }
+            .jane-profile-img {
+                width: 100px;
+                height: 100px;
+            }
+            .flag-icon {
+                width: 14px;
+                margin-right: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <h1>Glow by Janely 🧿</h1>
-  <p>@Jan_zermeno | Belleza, energía y bienestar</p>
-</header>
+    <div class="container animate__animated animate__fadeInDown">
+        <header>
+            <div class="logo-container">
+                <img src="https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/ojoturco.png" alt="[Logotipo Ojo Turco JaneZerm]" class="logo animate__animated animate__bounceIn">
+                <div class="slogan-text animate__animated animate__lightSpeedInRight">Los recuerdos en el alma NO en la piel</div>
+            </div>
+            <h1>Descubre Tu Tipo de Piel</h1>
+            <p>¡Responde estas preguntas para conocer mejor tu piel y recibir recomendaciones personalizadas!</p>
+        </header>
 
-<section class="intro">
-  <h2>Bienvenida a mi página</h2>
-  <p>Te ayudo a encontrar los productos ideales para cuidar tu piel, sentirte bien y brillar desde dentro ✨</p>
-</section>
+        <div id="quiz-container">
+            </div>
 
-<section class="productos">
-  <div class="producto">
-    <img src="calendula.jpg" alt="Crema Caléndula">
-    <h3>Crema Caléndula</h3>
-    <p>Ideal para piel sensible e irritada. Regenera y calma tu piel.</p>
-  </div>
+        <div class="navigation-buttons">
+            <button id="prev-btn" class="nav-button animate__animated animate__pulse" disabled>Anterior</button>
+            <button id="next-btn" class="nav-button animate__animated animate__pulse">Siguiente</button>
+            <button id="submit-btn" class="nav-button animate__animated animate__pulse" style="display:none;">Ver Resultados</button>
+        </div>
+    </div>
 
-  <div class="producto">
-    <img src="colageno.png" alt="Shot de Colágeno">
-    <h3>Shot de Colágeno</h3>
-    <p>Contribuye a una piel más firme, uñas fuertes y articulaciones sanas.</p>
-  </div>
+    <div id="results-container" class="container">
+        <h2>¡Tus Resultados!</h2>
+        <p>Basado en tus respuestas, tu tipo de piel es:</p>
+        <p id="skin-type-result" class="animate__animated animate__bounceIn"></p>
+        <p id="feedback-text" class="animate__animated animate__fadeInUp"></p>
 
-  <div class="producto">
-    <img src="boost.png" alt="Energy Boost">
-    <h3>Energy Boost</h3>
-    <p>Suplemento natural para recargar tu día con energía sin ansiedad.</p>
-  </div>
-</section>
+        <h3>Productos Recomendados:</h3>
+        <div id="product-recommendation-nu-skin" class="product-recommendation animate__animated animate__fadeInLeft">
+            <h4>Nu Skin</h4>
+            <ul id="nu-skin-products"></ul>
+        </div>
+        <div id="product-recommendation-farmasi" class="product-recommendation animate__animated animate__fadeInRight">
+            <h4>Farmasi</h4>
+            <ul id="farmasi-products"></ul>
+        </div>
+    </div>
 
-<footer>
-  <p>📩 Contáctame: <a href="https://wa.me/52XXXXXXXXXX">WhatsApp</a> | <a href="https://instagram.com/Jan_zermeno">@Jan_zermeno</a></p>
-  <p>© 2025 Glow by Janely</p>
-</footer>
+    <section id="about-me" class="container animate__animated animate__fadeInUp">
+        <h2>Sobre Mí</h2>
+        <img src="https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/jane.jpg" alt="[Imagen de Jane]" class="jane-profile-img">
+        <p>Hola soy Janely, mamá, esposa, emprendedora y apasionada por el bienestar, el skin care y el poder de una sonrisa auténtica. Mi misión es ayudarte a descubrir lo mejor de ti misma a través del cuidado de tu piel, con productos que realmente funcionan y una comunidad que abraza la autenticidad. He probado y recomendado los productos que hoy ves en esta página porque creo en ellos, los uso, y sé que pueden transformar no solo tu piel, sino también tu confianza. Glow by Janely nació del deseo de crear un espacio real, natural y con magia...donde cada persona encuentre lo que necesita para brillar a su manera. Aquí no vas a encontrar productos: vas a encontrar guía, inspiración y una mano amiga.</p>
 
+        <div class="join-business-section">
+            <h3>Únete a mi Equipo</h3>
+            <p>¿Quieres formar parte de esta comunidad y emprender en el mundo del bienestar y la belleza? ¡Hablemos!</p>
+            <p>WhatsApp: <a href="https://wa.me/525579040986" target="_blank" class="animate__animated animate__pulse nav-button">+52 5579040986</a></p>
+        </div>
+    </section>
+
+    <section id="product-galleries" class="container animate__animated animate__fadeInUp">
+        <h2>Nuestros Productos Favoritos</h2>
+
+        <div class="gallery-section" onclick="window.open('https://nskn.co/pekAl8', '_blank');">
+            <h3>Productos Nu Skin</h3>
+            <div class="product-grid" id="nu-skin-gallery">
+                </div>
+        </div>
+
+        <div class="gallery-section" onclick="window.open('https://mx.farmasi.com/janelyzermeno', '_blank');">
+            <h3>Productos Farmasi</h3>
+            <div class="product-grid" id="farmasi-gallery">
+                </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>¿Necesitas ayuda o quieres más información?</p>
+        <p>WhatsApp: <a href="https://wa.me/525579040986" target="_blank" class="animate__animated animate__pulse">+52 5579040986</a></p>
+        <p>Sígueme en Instagram: <a href="https://www.instagram.com/jan_zermeno?igsh=ZjQ1NXI0aGoxOGxl&utm_source=qr" target="_blank" class="animate__animated animate__pulse">@jan_zermeno</a></p>
+        <p>Tienda Nu Skin: <a href="https://nskn.co/pekAl8" target="_blank" class="animate__animated animate__pulse"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/32px-Flag_of_the_United_States.svg.png" alt="[Bandera de Estados Unidos]" class="flag-icon"> Comprar Nu Skin</a></p>
+        <p>Tienda Farmasi: <a href="https://mx.farmasi.com/janelyzermeno" target="_blank" class="animate__animated animate__pulse"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/32px-Flag_of_Turkey.svg.png" alt="[Bandera de Turquía]" class="flag-icon"> Comprar Farmasi</a></p>
+        <p>&copy; 2024 JaneZerm. Todos los derechos reservados.</p>
+    </footer>
+
+    <div class="decoration leaf-1">🍃</div>
+    <div class="decoration leaf-2">🍃</div>
+    <div class="decoration leaf-3">🍃</div>
+    <div class="decoration leaf-4">🍃</div>
+    <div class="decoration leaf-5">🍃</div>
+    <div class="decoration leaf-6">🍃</div>
+    <div class="decoration leaf-7">🍃</div>
+    <div class="decoration leaf-8">🍃</div>
+    <div class="decoration leaf-9">🍃</div>
+    <div class="decoration turkish-eye-1"><img src="https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/ojoturco.png" alt="[Ojo Turco]"></div>
+    <div class="decoration turkish-eye-2"><img src="https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/ojoturco.png" alt="[Ojo Turco]"></div>
+    <div class="decoration turkish-eye-3"><img src="https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/ojoturco.png" alt="[Ojo Turco]"></div>
+    <div class="decoration turkish-eye-4"><img src="https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/ojoturco.png" alt="[Ojo Turco]"></div>
+    <div class="decoration turkish-eye-5"><img src="https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/ojoturco.png" alt="[Ojo Turco]"></div>
+    <div class="decoration turkish-eye-6"><img src="https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/ojoturco.png" alt="[Ojo Turco]"></div>
+    <div class="decoration lipstick-1">💄</div>
+    <div class="decoration lipstick-2">💄</div>
+    <div class="decoration lipstick-3">💄</div>
+    <div class="decoration lipstick-4">💄</div>
+    <div class="decoration lipstick-5">💄</div>
+    <div class="decoration lipstick-6">💄</div>
+    <div class="decoration sparkle-1">✨</div>
+    <div class="decoration sparkle-2">✨</div>
+    <div class="decoration sparkle-3">✨</div>
+    <div class="decoration sparkle-4">✨</div>
+    <div class="decoration flower-1">🌸</div>
+    <div class="decoration flower-2">🌸</div>
+    <div class="decoration flower-3">🌸</div>
+    <div class="decoration flower-4">🌸</div>
+    <div class="decoration water-drop-1">💧</div>
+    <div class="decoration water-drop-2">💧</div>
+    <div class="decoration water-drop-3">💧</div>
+    <div class="decoration water-drop-4">💧</div>
+
+    <script>
+        // Definición de las preguntas de la trivia
+        const questions = [
+            {
+                question: "¿Con qué frecuencia sientes la piel tirante o con picazón, especialmente después de lavarte la cara?",
+                options: [
+                    { text: "Casi siempre", type: "seca", score: 3 },
+                    { text: "Frecuentemente", type: "seca", score: 2 },
+                    { text: "A veces", type: "normal", score: 1 },
+                    { text: "Nunca", type: "grasa", score: 0 }
+                ]
+            },
+            {
+                question: "¿Cómo describirías la apariencia de tus poros?",
+                options: [
+                    { text: "Pequeños y apenas visibles", type: "normal", score: 0 },
+                    { text: "Visibles, especialmente en la zona T", type: "mixta", score: 1 },
+                    { text: "Grandes y dilatados en casi toda la cara", type: "grasa", score: 2 },
+                    { text: "Prácticamente invisibles", type: "seca", score: 0 }
+                ]
+            },
+            {
+                question: "¿Cómo se siente tu piel al final del día, sin haber usado maquillaje?",
+                options: [
+                    { text: "Brillante y aceitosa en toda la cara", type: "grasa", score: 3 },
+                    { text: "Brillante solo en la zona T (frente, nariz, barbilla)", type: "mixta", score: 2 },
+                    { text: "Fresca y sin brillo excesivo", type: "normal", score: 0 },
+                    { text: "Un poco seca y áspera", type: "seca", score: 1 }
+                ]
+            },
+            {
+                question: "¿Con qué frecuencia experimentas brotes de acné o espinillas?",
+                options: [
+                    { text: "Constantemente", type: "grasa", score: 3 },
+                    { text: "Ocasionalmente, especialmente en la zona T", type: "mixta", score: 2 },
+                    { text: "Raramente", type: "normal", score: 0 },
+                    { text: "Nunca", type: "seca", score: 0 }
+                ]
+            },
+            {
+                question: "¿Cómo reacciona tu piel a los cambios de clima (frío, viento)?",
+                options: [
+                    { text: "Se enrojece, se irrita y se vuelve muy seca", type: "sensible", score: 3 },
+                    { text: "Se seca un poco, pero no se irrita", type: "seca", score: 2 },
+                    { text: "No hay cambios significativos", type: "normal", score: 0 },
+                    { text: "Se vuelve un poco más aceitosa", type: "grasa", score: 1 }
+                ]
+            },
+            {
+                question: "¿Notas alguna descamación o piel muerta, especialmente en las mejillas o alrededor de la boca?",
+                options: [
+                    { text: "Sí, a menudo", type: "seca", score: 3 },
+                    { text: "A veces, en invierno", type: "seca", score: 2 },
+                    { text: "Raramente", type: "normal", score: 0 },
+                    { text: "Nunca", type: "grasa", score: 0 }
+                ]
+            },
+            {
+                question: "¿Con qué frecuencia necesitas aplicar crema hidratante en tu rostro?",
+                options: [
+                    { text: "Varias veces al día", type: "seca", score: 3 },
+                    { text: "Una o dos veces al día", type: "normal", score: 1 },
+                    { text: "Solo en ciertas áreas (zona T)", type: "mixta", score: 0 },
+                    { text: "Casi nunca, mi piel se siente hidratada", type: "grasa", score: 0 }
+                ]
+            },
+            {
+                question: "¿Tu piel tiende a ser sensible a ciertos productos o ingredientes?",
+                options: [
+                    { text: "Sí, a menudo se irrita o enrojece", type: "sensible", score: 3 },
+                    { text: "A veces, con productos fuertes", type: "sensible", score: 2 },
+                    { text: "Raramente, tolero la mayoría de los productos", type: "normal", score: 0 },
+                    { text: "Nunca, mi piel es muy resistente", type: "grasa", score: 0 }
+                ]
+            },
+            {
+                question: "¿Cómo se siente tu piel al tacto en la zona de las mejillas?",
+                options: [
+                    { text: "Suave y elástica", type: "normal", score: 0 },
+                    { text: "Tirante y áspera", type: "seca", score: 2 },
+                    { text: "Un poco aceitosa", type: "grasa", score: 1 },
+                    { text: "A veces tirante, a veces normal", type: "mixta", score: 0 }
+                ]
+            },
+            {
+                question: "¿Tienes brillo excesivo en tu zona T (frente, nariz, barbilla) pero las mejillas se sienten normales o secas?",
+                options: [
+                    { text: "Sí, siempre", type: "mixta", score: 3 },
+                    { text: "A veces", type: "mixta", score: 2 },
+                    { text: "No, mi piel es consistente en toda la cara", type: "normal", score: 0 },
+                    { text: "No, mi piel es aceitosa en toda la cara", type: "grasa", score: 1 }
+                ]
+            }
+        ];
+
+        // Variables de estado del quiz
+        let currentQuestionIndex = 0; // Índice de la pregunta actual
+        let userAnswers = new Array(questions.length).fill(null); // Almacena las respuestas del usuario
+        let skinTypeScores = { // Puntajes para cada tipo de piel
+            normal: 0,
+            seca: 0,
+            grasa: 0,
+            mixta: 0,
+            sensible: 0
+        };
+
+        // Referencias a elementos del DOM
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const resultsContainer = document.getElementById('results-container');
+        const skinTypeResult = document.getElementById('skin-type-result');
+        const feedbackText = document.getElementById('feedback-text');
+        const nuSkinProductsList = document.getElementById('nu-skin-products');
+        const farmasiProductsList = document.getElementById('farmasi-products');
+        const nuSkinGallery = document.getElementById('nu-skin-gallery');
+        const farmasiGallery = document.getElementById('farmasi-gallery');
+
+
+        // Datos para las galerías de productos
+        const nuSkinProducts = [
+            { name: "Colágeno", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/colageno.png" },
+            { name: "Boost", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/boost.png" },
+            { name: "LumiSpa", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/lumispa.png" },
+            { name: "Tru Face Essence Ultra", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/tru%20face.png" },
+            { name: "Optimum Omega", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/omega.png" },
+            { name: "True Face Peptide", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/retinol.png" },
+            { name: "Kit ageLOC WellSpa iO Essentials Belleza", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/well%20Spa.jpg" }
+        ];
+
+        const farmasiProducts = [
+            { name: "Cosméticos (varios)", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/cosmeticos.jpg" },
+            { name: "Kit de Caléndula Dr. C. Tuna", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/calendula.jpg" }
+        ];
+
+        /**
+         * Carga la pregunta actual en la interfaz.
+         */
+        function loadQuestion() {
+            const questionData = questions[currentQuestionIndex];
+            quizContainer.innerHTML = `
+                <div class="question-container animate__animated animate__fadeIn">
+                    <p class="question-text">${currentQuestionIndex + 1}. ${questionData.question}</p>
+                    <div class="options-container">
+                        ${questionData.options.map((option, index) => `
+                            <button class="option-button" data-index="${index}">${option.text}</button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // Añadir event listeners a los botones de opción
+            document.querySelectorAll('.option-button').forEach(button => {
+                button.addEventListener('click', selectAnswer);
+                // Si la pregunta ya fue respondida, marcar la opción seleccionada
+                if (userAnswers[currentQuestionIndex] !== null && userAnswers[currentQuestionIndex].selectedOptionIndex == button.dataset.index) {
+                    button.classList.add('selected');
+                }
+            });
+
+            updateNavigationButtons(); // Actualizar el estado de los botones de navegación
+        }
+
+        /**
+         * Maneja la selección de una respuesta por parte del usuario.
+         * @param {Event} event - El evento de clic.
+         */
+        function selectAnswer(event) {
+            const selectedButton = event.target;
+            const optionIndex = parseInt(selectedButton.dataset.index);
+
+            // Remover la clase 'selected' de todos los botones de opción antes de añadirla al nuevo
+            document.querySelectorAll('.option-button').forEach(button => {
+                button.classList.remove('selected');
+            });
+
+            // Marcar la respuesta seleccionada
+            selectedButton.classList.add('selected');
+
+            // Guardar la respuesta del usuario
+            userAnswers[currentQuestionIndex] = {
+                questionIndex: currentQuestionIndex,
+                selectedOptionIndex: optionIndex
+            };
+
+            updateNavigationButtons(); // Actualizar el estado de los botones de navegación
+        }
+
+        /**
+         * Actualiza el estado de los botones de navegación (Anterior, Siguiente, Ver Resultados).
+         */
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentQuestionIndex === 0; // Deshabilitar 'Anterior' en la primera pregunta
+            nextBtn.style.display = currentQuestionIndex === questions.length - 1 ? 'none' : 'block'; // Ocultar 'Siguiente' en la última
+            submitBtn.style.display = currentQuestionIndex === questions.length - 1 ? 'block' : 'none'; // Mostrar 'Ver Resultados' en la última
+
+            // Habilitar 'Siguiente' o 'Ver Resultados' solo si la pregunta actual ha sido respondida
+            if (userAnswers[currentQuestionIndex] === null) {
+                nextBtn.disabled = true;
+                submitBtn.disabled = true;
+            } else {
+                nextBtn.disabled = false;
+                submitBtn.disabled = false;
+            }
+        }
+
+        /**
+         * Muestra la siguiente pregunta del quiz.
+         */
+        function showNextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        /**
+         * Muestra la pregunta anterior del quiz.
+         */
+        function showPrevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        /**
+         * Calcula el tipo de piel del usuario basado en sus respuestas.
+         * @returns {string} El tipo de piel determinado.
+         */
+        function calculateResults() {
+            // Reiniciar puntajes
+            for (const type in skinTypeScores) {
+                skinTypeScores[type] = 0;
+            }
+
+            // Calcular puntajes basados en las respuestas
+            userAnswers.forEach(answer => {
+                if (answer !== null) {
+                    const question = questions[answer.questionIndex];
+                    const selectedOption = question.options[answer.selectedOptionIndex];
+                    if (selectedOption && selectedOption.type) {
+                        skinTypeScores[selectedOption.type] += selectedOption.score;
+                    }
+                }
+            });
+
+            // Determinar el tipo de piel con el puntaje más alto
+            let maxScore = -1;
+            let skinType = "normal"; // Valor por defecto
+
+            // Prioridad para piel sensible si tiene un puntaje significativo
+            if (skinTypeScores.sensible >= 4) { // Umbral para considerar piel sensible
+                return "Sensible";
+            }
+
+            for (const type in skinTypeScores) {
+                if (skinTypeScores[type] > maxScore) {
+                    maxScore = skinTypeScores[type];
+                    skinType = type;
+                }
+            }
+
+            // Ajustes finos para tipos de piel
+            if (skinType === "normal" && skinTypeScores.mixta > skinTypeScores.normal && skinTypeScores.mixta > 0) {
+                skinType = "Mixta";
+            } else if (skinType === "normal" && skinTypeScores.grasa > skinTypeScores.normal && skinTypeScores.grasa > 0) {
+                skinType = "Grasa";
+            } else if (skinType === "normal" && skinTypeScores.seca > skinTypeScores.normal && skinTypeScores.seca > 0) {
+                skinType = "Seca";
+            }
+
+            return skinType.charAt(0).toUpperCase() + skinType.slice(1); // Capitalizar la primera letra
+        }
+
+        /**
+         * Muestra los resultados del quiz y las recomendaciones de productos.
+         */
+        function displayResults() {
+            document.querySelector('.container').style.display = 'none'; // Oculta el quiz
+            resultsContainer.style.display = 'block'; // Muestra los resultados
+
+            const determinedSkinType = calculateResults();
+            skinTypeResult.textContent = determinedSkinType;
+
+            let feedback = "";
+            let nuSkinRecs = [];
+            let farmasiRecs = [];
+
+            switch (determinedSkinType) {
+                case "Seca":
+                    feedback = "Tu piel necesita hidratación profunda y productos que ayuden a restaurar la barrera cutánea.";
+                    nuSkinRecs = ["Limpiador Cremoso", "Tónico Hidratante", "Crema Hidratante Intensa", "Mascarilla de Hidratación"];
+                    farmasiRecs = ["Línea de Caléndula", "Aceite de Almendras"];
+                    break;
+                case "Grasa":
+                    feedback = "Tu piel se beneficia de productos que controlen el exceso de sebo y minimicen los poros.";
+                    nuSkinRecs = ["Limpiador Purificante", "Tónico Equilibrante", "Gel Hidratante Ligero", "Mascarilla de Arcilla"];
+                    farmasiRecs = ["Línea Tea Tree", "Sérum con Niacinamida"];
+                    break;
+                case "Mixta":
+                    feedback = "Tu piel requiere un equilibrio, tratando la zona T grasa y las mejillas secas/normales.";
+                    nuSkinRecs = ["Limpiador Balanceante", "Tónico Dual", "Hidratante en Gel (zona T) y Crema (mejillas)", "Mascarilla Purificante (zona T)"];
+                    farmasiRecs = ["Línea Aloe Vera", "Sérum con Vitamina C"];
+                    break;
+                case "Sensible":
+                    feedback = "Tu piel es delicada y necesita productos suaves, sin fragancias ni irritantes.";
+                    farmasiRecs = ["Línea Dr. C. Tuna Calendula", "Agua Micelar"];
+                    break;
+                case "Normal":
+                default:
+                    feedback = "¡Felicidades! Tu piel está equilibrada y solo necesita mantenimiento con una rutina básica.";
+                    nuSkinRecs = ["Limpiador Suave", "Tónico Refrescante", "Hidratante Ligero", "Protector Solar"];
+                    farmasiRecs = ["Línea Aqua", "Crema de Día con SPF"];
+                    break;
+            }
+
+            feedbackText.textContent = feedback;
+
+            // Mostrar recomendaciones de Nu Skin
+            nuSkinProductsList.innerHTML = '';
+            nuSkinRecs.forEach(rec => {
+                const li = document.createElement('li');
+                li.textContent = rec;
+                nuSkinProductsList.appendChild(li);
+            });
+
+            // Mostrar recomendaciones de Farmasi
+            farmasiProductsList.innerHTML = '';
+            farmasiRecs.forEach(rec => {
+                const li = document.createElement('li');
+                li.textContent = rec;
+                farmasiProductsList.appendChild(li);
+            });
+        }
+
+        /**
+         * Carga los productos en las galerías.
+         */
+        function loadProductGalleries() {
+            nuSkinGallery.innerHTML = '';
+            farmasiGallery.innerHTML = '';
+
+            nuSkinProducts.forEach(product => {
+                const card = `
+                    <div class="product-card animate__animated animate__zoomIn">
+                        <img src="${product.img}" alt="${product.name}" onerror="this.onerror=null;this.src='https://placehold.co/150x120/C0C0C0/FFFFFF?text=Imagen+no+disponible';">
+                        <p>${product.name}</p>
+                    </div>
+                `;
+                nuSkinGallery.innerHTML += card;
+            });
+
+            // Modificar la carga de productos Farmasi para que cada tarjeta sea clickeable
+            farmasiProducts.forEach(product => {
+                const card = `
+                    <div class="product-card animate__animated animate__zoomIn" onclick="window.open('https://mx.farmasi.com/janelyzermeno', '_blank');">
+                        <img src="${product.img}" alt="${product.name}" onerror="this.onerror=null;this.src='https://placehold.co/150x120/C0C0C0/FFFFFF?text=Imagen+no+disponible';">
+                        <p>${product.name}</p>
+                    </div>
+                `;
+                farmasiGallery.innerHTML += card;
+            });
+        }
+
+        // Event Listeners para los botones de navegación
+        nextBtn.addEventListener('click', showNextQuestion);
+        prevBtn.addEventListener('click', showPrevQuestion);
+        submitBtn.addEventListener('click', displayResults);
+
+        // Cargar la primera pregunta y las galerías al iniciar la página
+        window.onload = function() {
+            loadQuestion();
+            loadProductGalleries();
+        };
+    </script>
 </body>
 </html>
