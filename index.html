@@ -677,11 +677,7 @@
         <p id="feedback-text" class="animate__animated animate__fadeInUp"></p>
 
         <h3>Productos Recomendados:</h3>
-        <div id="product-recommendation-nu-skin" class="product-recommendation animate__animated animate__fadeInLeft">
-            <h4>Nu Skin</h4>
-            <ul id="nu-skin-products"></ul>
-        </div>
-        <div id="product-recommendation-farmasi" class="product-recommendation animate__animated animate__fadeInRight">
+                <div id="product-recommendation-farmasi" class="product-recommendation animate__animated animate__fadeInRight">
             <h4>Farmasi</h4>
             <ul id="farmasi-products"></ul>
         </div>
@@ -876,25 +872,7 @@
         const farmasiProductsList = document.getElementById('farmasi-products');
         const nuSkinGallery = document.getElementById('nu-skin-gallery');
         const farmasiGallery = document.getElementById('farmasi-gallery');
-
-
-        // Datos para las galerías de productos
-        const nuSkinProducts = [
-            { name: "Colágeno", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/colageno.png" },
-            { name: "Boost", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/boost.png" },
-            { name: "LumiSpa", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/lumispa.png" },
-            { name: "Tru Face Essence Ultra", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/tru%20face.png" },
-            { name: "Optimum Omega", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/omega.png" },
-            { name: "True Face Peptide", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/retinol.png" },
-            { name: "Kit ageLOC WellSpa iO Essentials Belleza", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/well%20Spa.jpg" }
-        ];
-
-        const farmasiProducts = [
-            { name: "Cosméticos (varios)", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/cosmeticos.jpg" },
-            { name: "Kit de Caléndula Dr. C. Tuna", img: "https://github.com/MARTHA091/SKINCAREBYJANE/raw/main/calendula.jpg" }
-        ];
-
-        /**
+        
          * Carga la pregunta actual en la interfaz.
          */
         function loadQuestion() {
